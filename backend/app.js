@@ -16,8 +16,13 @@ app.use((req, res, next) => {
 });
 
 app.get('/meals', async (req, res) => {
-  const meals = await fs.readFile('./data/available-meals.json', 'utf8');
-  res.json(JSON.parse(meals));
+  try {
+    const meals = await fs.readFile('./data/available-meals.json', 'utf8');
+    res.json(JSON.parse(meals));
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Could not load meals.' });
+  }
 });
 
 app.post('/orders', async (req, res) => {
@@ -66,4 +71,6 @@ app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });
 });
 
-app.listen(3000);
+app.listen(5050, () => {
+  console.log('Server running on port 5050');
+});
