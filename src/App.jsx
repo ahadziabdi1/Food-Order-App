@@ -4,8 +4,8 @@ import Meals from "./components/Meals";
 function App() {
   return (
     <>
-    <Header />
-    <Meals />
+      <Header />
+      <Meals />
     </>
   );
 }
