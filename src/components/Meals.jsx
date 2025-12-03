@@ -9,7 +9,7 @@ export default function Meals() {
     const { data: loadedMeals, isLoading, error } = useHttp('http://localhost:5050/meals', requestConfig, [])
 
     if (isLoading) {
-        retrun(
+        return(
             <p className="center">Loading meals...</p>
         )
     }
